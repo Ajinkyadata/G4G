@@ -35,7 +35,7 @@ Output
 82*/
 
 #include <iostream>
-#include <array>
+#include <vector>
 #include <algorithm>
 #include<iterator>
 using namespace std;
@@ -44,7 +44,7 @@ using namespace std;
 int main()
 {
     int T;
-    array<int,50> arr;
+    vector<int> arr;
     cin>>T;
     for(int i=0;i<T;i++)
     {
@@ -52,14 +52,15 @@ int main()
         cin>>N;
 
         for(int j=0;j<N; j++)
-        cin>>arr[j];
-
-        for(int j=0;j<N; j++)
-        cout<<arr.at(j)<<endl;
+        {
+            int t;
+            cin>>t;
+            arr.push_back(t);
+        }
 
         sort(arr.begin(),arr.end());
 
-        for(int j=0;j<arr.size(); j++)
+        for(auto j=0;j!=arr.size(); j++)
         cout<<arr.at(j)<<endl;
         
         int n1=0,n2=0;
