@@ -26,34 +26,45 @@ Output:
 3 4 2 0 1
 1 0 3 2 */
 
-#include<iostream>
-#include <bits/stdc++.h>
+#include <iostream>
+#include<vector>
 using namespace std;
 
-int main()
+
+
+void rearr(vector<long int> &V)
 {
-    int T;
-    cin>>T;
-    for(int i=0;i<T;i++)
+    int N=V.size();
+    for(int i=0;i<N;i++)
     {
-        int N,arr[100000];
-        cin>>N;
-
-        for(int j=0;j<N; j++)
-        cin>>arr[j];
-
-        for(int k=0;k<N;k++)
-        {
-            int t=arr[i];
-            swap(arr[i],arr[t]);
-        }
-
-        for(int j=0;j<N;j++)
-        cout<<arr[j]<<" ";
-        cout<<"\n";
-        
+        V[i]=V[i]+(V[V[i]]%N)*N;
     }
+    
+    for(int j=0;j<N;j++)
+    {
+        V[j]=V[j]/N;
+    }    
+}
 
-
-    return 0;
+int main() {
+	int T;
+	cin>>T;
+	for(int i=0;i<T;i++)
+	{
+	    int N;
+	    cin>>N;
+	    vector<long int> V;
+	    for(int j=0;j<N;j++)
+	    {
+	        int t;
+	        cin>>t;
+	        V.push_back(t);
+	    }
+	    
+	    rearr(V);
+	    for(int j=0;j<N;j++)
+	        cout<<V.at(j)<<" ";
+	        cout<<"\n";
+	}
+	return 0;
 }
