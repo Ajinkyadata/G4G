@@ -25,85 +25,76 @@ Output:
 2 1
 3 2 */
 
+
 #include<iostream>
 #include<vector>
 
 using namespace std;
 
-
-int getmax(vector<int> &v)
+/* int main()
 {
-    int max=0,index;
-    for(int i=0;i<v.size();i++)
+    int t;
+    cin>>t;
+    for(int j=0;j<t;j++)
     {
-        if(v[i]>max)
+        int n,arr[100000],B[100000];
+        cin>>n;
+        for(int i=0; i<n;i++)
         {
-            max=v[i];
-            index=i;
-        }        
-    }
-    return index;
-}
+            cin>>arr[i];
+        } 
+        for(int i=0;i<=n;i++)
+            B[i]=0;
+        
+        int repe,miss;
+        for(int i=0;i<n;i++)
+        {
+            if(B[arr[i]]<0)
+            repe=arr[i];
+            B[arr[i]]=-1;
+        } 
 
-int getmin(vector<int> &v)
-{
-    int min=99999,index;
-    for(int i=0;i<v.size();i++)
-    {
-        if(v[i]>min)
+        for(int i=1;i<n;i++)
         {
-            min=v[i];
-            index=i;
-        }        
+            if(B[i]>=0)
+            miss=i;
+        } 
+        cout<<repe<<" "<<miss<<endl;        
     }
-    return index;
-}
+    return 0;
+} */
 
 int main()
 {
-    int T;
-    cin>>T;
-    for(int i=0; i<T; i++)
+    int t;
+    cin>>t;
+    for(int j=0;j<t;j++)
     {
-        int N;
-        vector<int> v,y,z;
-        cin>>N;
-        for(int j=0; j<N; j++)
+        int n;
+        vector<int> v;
+        cin>>n;
+        int B[n]={0};
+        for(int i=0; i<n;i++)
         {
             int temp;
             cin>>temp;
             v.push_back(temp);
-        }
-        int max,t;
-        max=getmax(v);
-        t=v[max];
-        vector <int > w;
-        w.resize(100000);
-        w.assign(100000,0);
-
-        //cout<<w[200]<<endl;
-
-        for(int j=0;j<N;j++)
+        }                 
+        int repe,miss;
+        for(int i=0;i<n;i++)
         {
-            w[v[i]]=w[v[i]]+1;
-            //cout<<w[v[i]]<<" ";
-        }
+            if(B[v.at(i)]<0)
+            repe=v.at(i);
+            B[v.at(i)]=-1;
+        } 
 
-        for(int j=0;j<N;j++)
+        for(int i=1;i<=n;i++)
         {
-            if(w[i]==2)
-            y.push_back(w[i]);
-            else if(w[i]==0)
-            z.push_back(w[i]);
-        }
-
-        int miss,rep;
-        miss=getmin(y);
-        rep=getmin(z);
-
-        cout<<miss<<" "<<rep<<endl;        
+            if(B[i]!=-1 && B[i]!=-2)
+            miss=i;
+        } 
+        cout<<repe<<" "<<miss<<endl;        
     }
-
-
     return 0;
 }
+

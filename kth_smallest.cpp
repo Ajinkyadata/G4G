@@ -28,13 +28,12 @@ Output:
 7
 15 */
 
-/* #include <iostream>
+#include <iostream>
 #include <vector>
 #include<algorithm>
 using namespace std;
-//int arr[30];
 
-int main()
+/* int main()
 {
     int T;
     cin>>T;
@@ -60,33 +59,54 @@ int main()
 
 } */
 
-#include <bits/stdc++.h>
-using namespace std;
 
-int main() {
-    int t;
-    cin>>t;
-    while(t--){
-        int n;
-        cin>>n;
-        int a[n];
-        int h[1000]={0};
-        for(int i=0;i<n;i++){
-        cin>>a[i];
-            h[a[i]]++;
-        }
- 
-        int k;
-        cin>>k;
-        for(int i=1;i<=1000;i++){
-            if(h[i]>=1)
-            k--;
-            if(k==0){
-            cout<<i<<endl;
-            break;}
-        }
-        
+
+int getmax(vector<int> &v)
+{
+    int max=0;
+    for(int i=0;i<v.size();i++)
+    {
+        if(v[i]>max)
+        max=v[i];
     }
-	//code
-	return 0;
+    return max;
+}
+
+int main()
+{
+    int T;
+    cin>>T;
+    for(int i=0;i<T;i++)
+    {
+        int N;
+        vector<int> v;
+        cin>>N;
+        for (int i=0; i<N; i++)
+        {
+            int temp;
+            cin>>temp;
+            v.push_back(temp);
+        }
+        int k,n;
+        cin>>k;
+        n=getmax(v);
+        cout<<n;
+        int s=n+1;
+        int B[s]={0};
+
+        for(int i=0; i<=N;i++)
+        {
+            B[v[i]]=B[v[i]]+1;
+        }
+        int kth;
+        for(int i=0;i<=n && k!=0 ;i++)
+        {
+            if(B[i]!=0)
+            {
+                k--;
+                kth=i;
+            }
+        }
+        cout<<kth<<endl;
+    }
 }
