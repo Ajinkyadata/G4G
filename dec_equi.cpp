@@ -87,9 +87,9 @@ struct Node
 }; */
 // Should return decimal equivalent modulo 1000000007 of binary linked list 
 
-int powo(int x,int y)
+long long unsigned int powo(int x,int y)
 {
-    int mul=1;
+    long long unsigned int mul=1;
     for(int i=0;i<y;i++)
     mul*=x;
     
